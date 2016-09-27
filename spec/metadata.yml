@@ -77,6 +77,7 @@ packages:
   - flex
   - bison
   - libsane-dev
+  - libxslt1-dev
 frameworks:
   build_kf5: true
   frameworks:
