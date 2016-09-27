@@ -27,7 +27,7 @@ require 'pty'
 system('bundle install')
 
 builder = CI.new
-builder.run = [CI::Build.new('vlc3')]
+builder.run = [CI::Build.new('skanlite')]
 builder.cmd = %w[rspec /in/spec/recipe_rspec.rb --fail-fast]
 cmd = builder.create_container
 begin
