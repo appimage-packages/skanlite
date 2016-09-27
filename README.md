@@ -1,2 +1,2 @@
-# skanlite-packaging
-Appimage for skanlite
+# appimage-template
+Appimage template for skanlite KDE scanner application.
