@@ -89,10 +89,10 @@ if host == "scarlett-neon\n"
 
 else
   @c.start( 'Privileged' => true,
-                    'Binds' => ["/home/jenkins/workspace/appimage-${name}/:/in",
-                             "/home/jenkins/workspace/appimage-${name}/out:/out",
+                    'Binds' => ["/home/jenkins/workspace/appimage-${name}-packaging/:/in",
+                             "/home/jenkins/workspace/appimage-${name}-packaging/out:/out",
                              "/tmp:/tmp",
-                              "/home/jenkins/workspace/appimage-${name}/app:/app"])
+                              "/home/jenkins/workspace/appimage-${name}-packaging/app:/app"])
 end
     ret = @c.wait
     status_code = ret.fetch('StatusCode', 1)
