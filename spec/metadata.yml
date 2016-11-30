@@ -1,166 +1,125 @@
-name: skanlite
+name: xdgurl
 packages:
-  - build-essential
-  - libgl1-mesa-dev
-  - software-properties-common
-  - libxcb-xfixes0-dev
-  - autotools-dev
-  - libdbus-1-3
-  - libdbus-1-dev
-  - libxcb1
-  - libxcb1-dev
-  - libx11-xcb1
-  - libx11-xcb-dev
-  - libxcb-keysyms1
-  - libxcb-keysyms1-dev
-  - libxcb-image0
-  - libxcb-image0-dev
-  - libxcb-shm0
-  - libxcb-shm0-dev
-  - libxcb-icccm4
-  - libxcb-icccm4-dev
-  - libxcb-sync-dev
-  - libxcb-xfixes0-dev
-  - libxcb-render-util0
-  - libxcb-render-util0-dev
-  - libxcb-shape0-dev
-  - libxcb-xfixes0-dev
-  - libxcb-randr0-dev
-  - libxrender-dev
-  - libssl-dev
-  - libudev-dev
-  - libwayland0
-  - libxkbcommon-dev
-  - libxkbcommon0
-  - libfontconfig1-dev
-  - libgl1-mesa-dev
-  - libgles2-mesa-dev
-  - libglib2.0-dev
-  - libglu1-mesa-dev
-  - libicu-dev
+  - automake
+  - libarchive-dev
+  - gpgv2
+  - curl
+  - zsync
+  - libjte-dev
   - pkg-config
-  - libatspi2.0-dev
-  - libcups2-dev
-  - libgtk2.0-dev
-  - libmtdev-dev
-  - unixodbc-dev
-  - freetds-dev
-  - libmysqlclient-dev
-  - libxkbfile-dev
-  - libsqlite3-dev
-  - libharfbuzz-dev
-  - libxkbcommon-x11-dev
-  - libasound2-dev
-  - libgstreamer-plugins-base1.0-dev
-  - libgstreamer1.0-dev
-  - libts-dev
-  - libpulse-dev
-  - libproxy-dev
-  - libxss-dev
-  - libsnappy-dev
-  - libsrtp0-dev
-  - libflac++-dev
-  - libopus-dev
-  - libspeex-dev
-  - libjsoncpp-dev
-  - libvpx-dev
-  - re2c
-  - libevent-dev
-  - libopenal-dev
-  - libpq-dev
-  - libsystemd-journal-dev
-  - libxcb-xinerama0-dev
-  - docbook-xml
-  - docbook-xsl
-  - libappstream-dev
-  - libncurses5-dev
+  - libstemmer-dev
   - flex
   - bison
-  - libsane-dev
-  - libxslt1-dev
+  - libmount-dev
+  - itstool
+  - xmlto
+  - libgtk2.0-dev
+  #app specifc
+  - gnome-icon-theme
+  - tcl8.4-dev
 frameworks:
-  build_kf5: true
+  build_kf5: false
   frameworks:
-    - extra-cmake-modules
-    - kcoreaddons
-    - ki18n
-    - kitemviews
-    - kconfig
-    - kauth
-    - kcodecs
-    - karchive
-    - kdoctools
-    - kguiaddons
-    - kwidgetsaddons
-    - kconfigwidgets
-    - kiconthemes
-    - kcompletion
-    - kwindowsystem
-    - kcrash
-    - kdbusaddons
-    - kservice
-    - sonnet
-    - ktextwidgets
-    - kglobalaccel
-    - kxmlgui
-    - solid
-    - kbookmarks
-    - kjobwidgets
-    - kio
-    - phonon
-    - knotifications
-    - kwallet
-    - libksane
-    - ktextwidgets
 type: git
-url: "http://anongit.kde.org/skanlite"
-buildsystem: cmake
-buildoptions: "-DCMAKE_INSTALL_PREFIX=/app/usr -DBUILD_TESTING=OFF"
-dep_path:
-  - /usr/lib/python2*
-  - /usr/bin/python*
+url: https://github.com/xdgurl/xdgurl
+buildsystem: qmake
+buildoptions: "qmake PREFIX=/app/usr xdgurl.pro"
 dependencies:
-  - appimage:
-      build:
-        buildsystem: custom
-        buildoptions: ./build.sh
-      depname: AppImageKit
-      source:
-        type: git
-        url: https://github.com/probonopd/AppImageKit
-  - cmake:
+  - libffi:
       build:
         buildsystem: make
+        autoreconf: false
         buildoptions: ''
-      depname: CMake
+      depname: libffi-3.2.1
       source:
-        type: git
-        url: https://github.com/Kitware/CMake
-        branch: 'v3.0.0'
-  - qt5:
+        type: gz
+        url: ftp://sourceware.org/pub/libffi/libffi-3.2.1.tar.gz
+  - glib:
       build:
-        buildsystem: custom
-        buildoptions: ./configure -v -release -opensource -confirm-license -no-sql-sqlite -no-gif -qt-libjpeg -skip qt3d -no-qml-debug -no-sql-odbc -qt-xcb -no-compile-examples -nomake examples -prefix /app/usr && make && make install
-      depname: qt-everywhere-opensource-src-5.7.0
+        buildsystem: make
+        autoreconf: true
+        buildoptions: ''
+      depname: glib-2.50.0
       source:
         type: xz
-        url: http://download.qt.io/archive/qt/5.7/5.7.0/single/qt-everywhere-opensource-src-5.7.0.tar.xz
-  - linuxdeployqt:
-      build:
-        buildsystem: qmake
-        buildoptions: linuxdeployqt.pro
-      depname: linuxdeployqt
-      source:
-        type: git
-        url: https://github.com/probonopd/linuxdeployqt.git
-  - patchelf:
+        url: http://ftp.gnome.org/pub/gnome/sources/glib/2.50/glib-2.50.0.tar.xz
+  - gettext:
       build:
         buildsystem: make
         buildoptions: ''
-      depname: patchelf-0.9
+      depname: gettext-0.19.7
       source:
-        type: bz2
-        url: https://nixos.org/releases/patchelf/patchelf-0.9/patchelf-0.9.tar.bz2
+        type: gz
+        url: ftp://ftp.gnu.org/gnu/gettext/gettext-0.19.7.tar.gz
+  - python2:
+      build:
+        buildsystem: make
+        autoreconf: true
+        buildoptions: ''
+      depname: Python-2.7.12
+      source:
+        type: xz
+        url: https://www.python.org/ftp/python/2.7.12/Python-2.7.12.tar.xz
+  - gobject-introspection:
+      build:
+        buildsystem: make
+        autoreconf: true
+        buildoptions: ''
+      depname: gobject-introspection-1.50.0
+      source:
+        type: xz
+        url:   http://ftp.gnome.org/pub/gnome/sources/gobject-introspection/1.50/gobject-introspection-1.50.0.tar.xz
+  - libxml2:
+      build:
+        buildsystem: make
+        autoreconf: true
+        buildoptions: ''
+      depname: libxml2-2.9.4
+      source:
+        type: gz
+        url:  http://xmlsoft.org/sources/libxml2-2.9.4.tar.gz
+  - yaml:
+      build:
+        buildsystem: make
+        autoreconf: true
+        buildoptions: ''
+      depname: yaml-0.1.6
+      source:
+        type: gz
+        url: http://pyyaml.org/download/libyaml/yaml-0.1.6.tar.gz
+  # - appstream:
+  #     build:
+  #       buildsystem: cmake
+  #       buildoptions: '-DCMAKE_INSTALL_PREFIX=/app/usr'
+  #     depname: AppStream-0.10.3
+  #     source:
+  #       type: xz
+  #       url:  https://www.freedesktop.org/software/appstream/releases/AppStream-0.10.3.tar.xz
+  # - appimagetool:
+  #     build:
+  #       buildsystem: custom
+  #       buildoptions: ./build.sh
+  #     depname: appimagetool
+  #     source:
+  #       type: git
+  #       url: https://github.com/probonopd/appimagetool.git
+  # - linuxdeployqt:
+  #     build:
+  #       buildsystem: qmake
+  #       buildoptions: linuxdeployqt.pro
+  #     depname: linuxdeployqt
+  #     source:
+  #       type: git
+  #       url: https://github.com/probonopd/linuxdeployqt.git
+  # - patchelf:
+  #     build:
+  #       buildsystem: make
+  #       autoreconf: true
+  #       buildoptions: ''
+  #     depname: patchelf-0.9
+  #     source:
+  #       type: bz2
+  #       url: https://nixos.org/releases/patchelf/patchelf-0.9/patchelf-0.9.tar.bz2
   - cpan:
       build:
         buildsystem: custom
