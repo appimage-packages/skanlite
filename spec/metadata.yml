@@ -111,7 +111,6 @@ frameworks:
     - knotifications
     - kwallet
     - libksane
-    - breeze-icons
 type: git
 url: "http://anongit.kde.org/skanlite"
 buildsystem: cmake
