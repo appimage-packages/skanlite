@@ -76,8 +76,10 @@ chmod +x AppRun
 mkdir -p ./usr/bin; mv /app/usr/bin/* $_
 cp /app/usr/share/applications/*<%= name %>*.desktop <%= name %>.desktop
 mkdir -p ./usr/share/applications/; mv /app/usr/share/applications/*<%= name %>*.desktop $_
+
+#skanlite has a special case for icon, do not change
 cp /app/usr/share/icons/hicolor/scalable/apps/*<%= name %>* .
-mkdir -p ./usr/share/icons/hicolor; mv /app/usr/share/icons/hicolor $_
+mkdir -p ./usr/share/icons/hicolor/64x64/devices; cp scanner.png $_
 
 #KDE files
 mkdir -p ./usr/lib/; mv /app/usr/lib/* $_
