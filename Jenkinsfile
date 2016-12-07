@@ -33,7 +33,7 @@ node('linux') {
             checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, \
             extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'appimage-template'],  [$class: 'IgnoreNotifyCommit']], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/appimage-packages/appimage-template']]])
             checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, \
-            extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'skanlite'], [$class: 'CleanBeforeCheckout']], submoduleCfg: [], userRemoteConfigs: [[url: 'https://anongit.kde.org/skanlite']]])
+            extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'skanlite']], submoduleCfg: [], userRemoteConfigs: [[url: 'https://anongit.kde.org/skanlite']]])
        }
         stage( 'Setup' ) {
             sh 'bundle install'
