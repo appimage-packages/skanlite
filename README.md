@@ -1,5 +1,5 @@
 # skanlite
-[![Build Status](http://aci.pangea.pub/job/pipeline-skanlite-appimage/job/master/badge/icon)](http://aci.pangea.pub/job/pipeline-skanlite-appimage/job/master/)
+[![Build Status](http://aci.pangea.pub/job/mpipeline-skanlite-appimage/job/master/badge/icon)](http://aci.pangea.pub/job/mpipeline-skanlite-appimage/job/master/)
 
 AppImage for KDE skanlite
 
