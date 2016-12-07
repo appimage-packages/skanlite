@@ -76,7 +76,7 @@ chmod +x AppRun
 cp /app/usr/share/applications/*<%= name %>*.desktop <%= name %>.desktop
 
 #skanlite has a special case for icon, do not change
-cp /app/usr/share/icons/hicolor/scalable/apps/*<%= name %>* .
+cp /in/skanlite_scanner.png scanner.png
 mkdir -p ./usr/share/icons/hicolor/64x64/devices; cp scanner.png $_
 
 #Move everything in AppDir
