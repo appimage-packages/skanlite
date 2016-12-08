@@ -72,7 +72,7 @@ export APPIMAGE_STARTUP_PATH=\$PATH
 <%= name %> \$@
 EOF
 chmod +x AppRun
-
+cp /app/usr/bin/<%= name %> .
 cp /app/usr/share/applications/*<%= name %>*.desktop <%= name %>.desktop
 
 #skanlite has a special case for icon, do not change
@@ -85,7 +85,7 @@ mkdir ./etc; mv /app/etc $_
 mkdir ./usr/lib/x86_64-linux-gnu/plugins; mv /app/usr/lib/x86_64-linux-gnu/plugins $_
 mkdir -p ./usr/share/icons/hicolor/64x64/devices; cp scanner.png $_
 
-../linuxdeployqt-1-x86_64.AppImage ./usr/bin/<%= name %> -verbose=3 -bundle-non-qt-libs -qmldir=/opt/usr/qml
+../linuxdeployqt-1-x86_64.AppImage <%= name %> -verbose=3 -bundle-non-qt-libs -qmldir=/opt/usr/qml
 
 glibc_needed
 patch_usr
