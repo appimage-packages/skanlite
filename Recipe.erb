@@ -77,11 +77,13 @@ cp /app/usr/share/applications/*<%= name %>*.desktop <%= name %>.desktop
 
 #skanlite has a special case for icon, do not change
 cp /in/skanlite_scanner.png scanner.png
-mkdir -p ./usr/share/icons/hicolor/64x64/devices; cp scanner.png $_
+
 
 #Move everything except libs into AppDir
-mv /app/usr/{bin,etc,share} ./usr/
+mv /app/usr/{bin,share} ./usr/
+mkdir ./etc; mv /app/etc $_
 mkdir ./usr/lib/x86_64-linux-gnu/plugins; mv /app/usr/lib/x86_64-linux-gnu/plugins $_
+mkdir -p ./usr/share/icons/hicolor/64x64/devices; cp scanner.png $_
 
 ../linuxdeployqt-1-x86_64.AppImage ./usr/bin/<%= name %> -verbose=3 -bundle-non-qt-libs -qmldir=/opt/usr/qml
 
