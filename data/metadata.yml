@@ -114,7 +114,7 @@ frameworks:
 type: git
 url: "http://anongit.kde.org/skanlite"
 buildsystem: cmake
-buildoptions: "-DCMAKE_INSTALL_PREFIX=/app/usr -DBUILD_TESTING=OFF"
+buildoptions: "-DCMAKE_INSTALL_PREFIX=/opt/usr -DBUILD_TESTING=OFF"
 dep_path:
   - /usr/lib/python2*
   - /usr/bin/python*
