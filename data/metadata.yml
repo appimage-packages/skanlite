@@ -86,6 +86,7 @@ frameworks:
     - ki18n
     - kitemviews
     - kconfig
+    - polkit-qt-1
     - kauth
     - kcodecs
     - karchive
@@ -102,14 +103,21 @@ frameworks:
     - sonnet
     - ktextwidgets
     - kglobalaccel
+    - attica
     - kxmlgui
     - solid
     - kbookmarks
     - kjobwidgets
-    - kio
     - phonon
+    - phonon-gstreamer
     - knotifications
+    - gpgmepp
     - kwallet
+    - kio
+    - knewstuff
+    - breeze-icons
+    - kactivities
+    - plasma-framework
     - libksane
 type: git
 url: "http://anongit.kde.org/skanlite"
