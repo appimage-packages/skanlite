@@ -2,6 +2,7 @@ name: skanlite
 binary: skanlite
 packages:
   - build-essential
+  - libsane-dev
 frameworks:
   build_kf5: true
   frameworks:
